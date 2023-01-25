@@ -33,7 +33,7 @@ public class AddPastryServlet extends HttpServlet {
             pastry.setName(name);
             pastry.setImgName(imgName);
             FactoryDao.getPastryDao().save(pastry);
-            response.sendRedirect("pastry-list");
+            response.sendRedirect(request.getContextPath() + "/pastry-list");
         }
     }
 }
