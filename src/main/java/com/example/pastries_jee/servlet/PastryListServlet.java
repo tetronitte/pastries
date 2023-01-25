@@ -1,7 +1,7 @@
 package com.example.pastries_jee.servlet;
 
-import com.example.dao.FactoryDao;
-import com.example.entities.Pastry;
+import com.example.pastries_jee.dao.FactoryDao;
+import com.example.pastries_jee.entities.Pastry;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>demoJEE</artifactId>
+    <artifactId>pastriesJee</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>demoJEE</name>
+    <name>pastriesJee</name>
     <packaging>war</packaging>
 
     <properties>

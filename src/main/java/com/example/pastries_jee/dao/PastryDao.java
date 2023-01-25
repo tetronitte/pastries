@@ -1,6 +1,6 @@
 package com.example.pastries_jee.dao;
 
-import com.example.entities.Pastry;
+import com.example.pastries_jee.entities.Pastry;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -12,22 +12,18 @@ public class PastryDao implements GenericDao<Pastry> {
     private EntityManager em;
 
     public PastryDao(EntityManager em) {
-
         this.em = em;
     }
 
     private void startTransaction() {
-
         em.getTransaction().begin();
     }
 
     private void endTransaction() {
-
         em.getTransaction().commit();
     }
 
     private void rollback() {
-
         em.getTransaction().rollback();
     }
 
@@ -35,7 +31,7 @@ public class PastryDao implements GenericDao<Pastry> {
         TypedQuery<Pastry> query = em.createQuery("SELECT p FROM Pastry p WHERE p.name = :name", Pastry.class);
         query.setParameter("name", name);
         Pastry pastry = query.getSingleResult();
-        return Optional.ofNullable(pastry);
+        return Optional.of(pastry);
     }
 
     @Override
@@ -78,7 +74,7 @@ public class PastryDao implements GenericDao<Pastry> {
     public void delete(Pastry pastry) {
         try {
             startTransaction();
-            em.remove(pastry);
+            em.remove(em.contains(pastry) ? pastry : em.merge(pastry));
             endTransaction();
         } catch (Exception e) {
             System.out.println(e.getCause().getMessage());

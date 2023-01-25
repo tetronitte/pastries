@@ -25,7 +25,7 @@
                 <input name="imgName" type="textarea" class="form-control" placeholder="Name image" aria-label="Name image"
                        aria-describedby="basic-addon3">
             </div>
-            <c:if test="${error}">
+            <c:if test="${not empty error}">
                 <div class="alert alert-danger" role="alert">
                     <c:out value="${error}"/>
                 </div>
