@@ -2,6 +2,7 @@ package com.example.pastries_jee.dao;
 
 import com.example.pastries_jee.entities.Pastry;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -32,6 +33,13 @@ public class PastryDao implements GenericDao<Pastry> {
         query.setParameter("name", name);
         Pastry pastry = query.getSingleResult();
         return Optional.of(pastry);
+    }
+
+    public List<Pastry> getLike(String search) {
+        Query query = em.createQuery("SELECT p FROM Pastry p WHERE p.name LIKE :search");
+        query.setParameter("search","%"+search+"%");
+        List<Pastry> pastries = query.getResultList();
+        return pastries;
     }
 
     @Override

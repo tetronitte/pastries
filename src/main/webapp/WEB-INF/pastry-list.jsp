@@ -8,6 +8,15 @@
 </head>
 <body>
 <div class="container">
+    <form method="post" action="${pageContext.request.contextPath}/pastry-list">
+        <div class="input-group" style="width: 400px;">
+            <div class="form-outline">
+                <input name="search" type="text" class="form-control" placeholder="Search" aria-label="Search"
+                       aria-describedby="basic-addon1">
+            </div>
+            <input type="submit" class="btn-btn-primary" value="search"/>
+        </div>
+    </form>
     <div class="row">
         <c:forEach items="${pastries}" var="pastry">
             <div class="card" style="width: 18rem; border: 1px solid black;">
@@ -15,7 +24,7 @@
                 <div class="card-body">
                     <h5 class="card-title">${pastry.name}</h5>
                     <p class="card-text">${pastry.description}</p>
-                    <form method="post" action="${pageContext.request.contextPath}/pastry-list">
+                    <form method="post" action="${pageContext.request.contextPath}/delete-pastry">
                         <input type="hidden" name="id" value="${pastry.id}"/>
                         <input type="submit" class="btn-btn-primary" value="Supprimer"/>
                     </form>
